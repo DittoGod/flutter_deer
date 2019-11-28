@@ -96,8 +96,9 @@ class _GoodsStatisticsPageState extends State<GoodsStatisticsPage> {
   _buildChart(){
     return AspectRatio(
       aspectRatio: 1.30,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24.0),
+      // 百分比布局
+      child: FractionallySizedBox(
+        heightFactor: 0.8,
         child: PieChart(
           name: _type ? "待配货" : "已配货",
           data: _getRandomData(),
@@ -157,7 +158,7 @@ class _GoodsStatisticsPageState extends State<GoodsStatisticsPage> {
                     shape: BoxShape.circle,
                     color: Constant.colorList[index]
                 ),
-                child: Text("${index + 1}", style: TextStyle(color: Colors.white, fontSize: 12.0, fontWeight: FontWeight.bold)),
+                child: Text("${index + 1}", style: TextStyle(color: Colors.white, fontSize: Dimens.font_sp12, fontWeight: FontWeight.bold)),
               ),
               Gaps.hGap4,
               Container(
@@ -177,7 +178,7 @@ class _GoodsStatisticsPageState extends State<GoodsStatisticsPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("那鲁火多饮料", maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0)),
+                    Text("那鲁火多饮料", maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold, fontSize: Dimens.font_sp12)),
                     Text("250ml", style: Theme.of(context).textTheme.subtitle),
                   ],
                 ),
@@ -214,7 +215,7 @@ class _GoodsStatisticsPageState extends State<GoodsStatisticsPage> {
     Color unSelectedTextColor = ThemeUtils.isDark(context) ? Colors.white : Colours.dark_text_gray;
     return SelectedText(
       text,
-      fontSize: 15.0,
+      fontSize: Dimens.font_sp15,
       selected: _type && _selectedIndex == index,
       unSelectedTextColor: unSelectedTextColor,
       onTap: _type ? (){
